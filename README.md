@@ -9,8 +9,8 @@
 
 > 🔹 **Features**  
 > - 🎤 Voice Command Recognition (speech interaction)  
-> - 💻 GUI with PyQt5 (`JarvisUi.py`)  
-> - 🖥️ CLI (Non-GUI) lightweight version (`JarvisWithoutGUI.py`)  
+> - 💻 GUI with PyQt5 (`LEXI.py`)  
+> - 🖥️ CLI (Non-GUI) lightweight version (`LEXIWithoutGUI.py`)  
 > - 📱 QR Code Generation & Handling (`QrCodes/`)  
 > - 📂 State Management (`state.py`)  
 > - ⚡ Extensible design for new modules  
@@ -26,10 +26,10 @@
 > 🔹 **Project Structure**
 > ```
 > lexi/
-> ├── JARVIS.py                # Main entry point
-> ├── JarvisUi.py              # GUI logic
-> ├── JarvisUi.ui              # Qt Designer file
-> ├── JarvisWithoutGUI.py      # Non-GUI version
+> ├── LEXI.py                # Main entry point
+> ├── LEXIUi.py              # GUI logic
+> ├── LEXIUi.ui              # Qt Designer file
+> ├── LEXIWithoutGUI.py      # Non-GUI version
 > ├── state.py                 # State management
 > ├── requirements.txt         # Dependencies
 > ├── QrCodes/                 # QR code files
@@ -50,13 +50,13 @@
 > 🔹 **Usage**
 > ```bash
 > # Run GUI version
-> python JarvisUi.py
+> python LEXIUi.py
 >
 > # Run Non-GUI version
-> python JarvisWithoutGUI.py
+> python LEXIWithoutGUI.py
 >
 > # Run Main script
-> python JARVIS.py
+> python LEXI.py
 > ```
 >
 > 🔹 **Future Enhancements**

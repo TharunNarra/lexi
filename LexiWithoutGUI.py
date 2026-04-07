@@ -1,4 +1,4 @@
-#_____________________________________________________J.A.R.V.I.S________________________________________________________
+#_____________________________________________________L.E.X.I________________________________________________________
 #Python modules used for this programm
 import sys
 import speech_recognition as sr
@@ -35,7 +35,7 @@ voices = engine.getProperty('voices')
 engine.setProperty('voice',voices[0].id) #index '0' for 'David'(male) voice index '1' for 'zira'(female) voice
 
 #Main classs where all the functiona are present
-class Jarvis():
+class Lexi():
     def __init__(self):
         self.Intro()
         
@@ -51,8 +51,8 @@ class Jarvis():
                 print("Recognizing...")
                 command1 = listener.recognize_google(voice,language='en-in')
                 command1 = command1.lower()  
-                if 'jarvis' in command1: 
-                    command1 = command1.replace('jarvis','')
+                if 'lexi' in command1: 
+                    command1 = command1.replace('lexi','')
                 
             return command1
         except:
@@ -61,7 +61,7 @@ class Jarvis():
     #Jarvis commands controller 
     def run_jarvis(self):
         self.wish()
-        self.talk('Hello boss I am jarvis your assistant. please tell me how can i help you')
+        self.talk('Hello boss I am lexi your assistant. please tell me how can i help you')
         while True:
             self.command = self.take_Command() #Every time taking command after a task is done
             print(self.command)
@@ -838,4 +838,4 @@ class Jarvis():
     def No_result_found(self):
         self.talk('Boss I couldn\'t understand, could you please say it again.')        
 
-Jarvis()
+Lexi()

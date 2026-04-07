@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>JarvisUI</class>
- <widget class="QMainWindow" name="JarvisUI">
+ <class>LexiUI</class>
+ <widget class="QMainWindow" name="LexiUI">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -132,7 +132,7 @@ border-radius:none;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../ringJar.gif</pixmap>
+     <pixmap>../ringJar.jpg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>

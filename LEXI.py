@@ -31,7 +31,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUiType
-from JarvisUi import Ui_JarvisUI
+from LexiUi import Ui_LexiUI
 from state import state
 from pywikihow import search_wikihow
 import speedtest
@@ -65,16 +65,16 @@ class MainThread(QThread):
                 print("Recognizing...")
                 command1 = listener.recognize_google(voice,language='en-in')
                 command1 = command1.lower()  
-                if 'jarvis' in command1: 
-                    command1 = command1.replace('jarvis','')
+                if 'lexi' in command1: 
+                    command1 = command1.replace('lexi','')
                 
             return command1
         except:
-            return 'None'   
+            return 'None..'   
     #Jarvis commands controller 
     def run_jarvis(self):
         self.wish()
-        self.talk('Hello boss I am jarvis your assistant. please tell me how can i help you')
+        self.talk('Hello boss I am lexi your assistant. please tell me how can i help you')
         while True:
             self.command = self.take_Command() #Every time taking command after a task is done
             print(self.command)
@@ -712,7 +712,7 @@ class MainThread(QThread):
             self.No_result_found()
         
     #Browser
-    def brows(self,command):
+    def browser(self,command):
         print(command)
         if 'google' in command:
             self.talk("Boss, what should I search on google..")
@@ -1020,16 +1020,32 @@ class MainThread(QThread):
 
     #News
     def news(self):
-        MAIN_URL_= "https://newsapi.org/v2/everything?q=tesla&from=2025-03-14&sortBy=publishedAt&apiKey=a9f7d06583044377a98da3d6fd66b4c2"
-        MAIN_PAGE_ = get(MAIN_URL_).json()
-        articles = MAIN_PAGE_["articles"]
-        headings=[]
-        seq = ['first','second','third','fourth','fifth','sixth','seventh','eighth','ninth','tenth'] #If you need more than ten you can extend it in the list
-        for ar in articles:
-            headings.append(ar['title'])
-        for i in range(len(seq)):
-            print(f"todays {seq[i]} news is: {headings[i]}")
-            self.talk(f"todays {seq[i]} news is: {headings[i]}")
+        try:
+            MAIN_URL_= "https://newsapi.org/v2/top-headlines?country=us&apiKey=a9f7d06583044377a98da3d6fd66b4c2"
+            MAIN_PAGE_ = get(MAIN_URL_).json()
+            
+            # Check if 'articles' key exists and the request was successful
+            if "articles" in MAIN_PAGE_ and MAIN_PAGE_.get("status") == "ok":
+                articles = MAIN_PAGE_["articles"]
+                headings=[]
+                seq = ['first','second','third','fourth','fifth','sixth','seventh','eighth','ninth','tenth'] #If you need more than ten you can extend it in the list
+                
+                for ar in articles:
+                    headings.append(ar['title'])
+                
+                if not headings:
+                    self.talk("Sorry, I couldn't find any news headlines at the moment.")
+                    return
+                    
+                for i in range(min(len(seq), len(headings))):
+                    print(f"todays {seq[i]} news is: {headings[i]}")
+                    self.talk(f"todays {seq[i]} news is: {headings[i]}")
+            else:
+                self.talk("Sorry, I couldn't fetch the news. The API might be unavailable or the key might have expired.")
+                return
+        except Exception as e:
+            self.talk(f"Sorry, there was an error fetching the news. {str(e)}")
+            return
         self.talk("Boss I am done, I have read most of the latest news")
 
     #System condition
@@ -1059,7 +1075,7 @@ class Main(QMainWindow):
     def __init__(self,path):
         self.cpath = path
         super().__init__()
-        self.ui = Ui_JarvisUI(path=current_path)
+        self.ui = Ui_LexiUI(path=current_path)
         self.ui.setupUi(self)
         self.ui.pushButton_4.clicked.connect(self.startTask)
         self.ui.pushButton_3.clicked.connect(self.close)
@@ -1069,7 +1085,7 @@ class Main(QMainWindow):
         self.ui.movie = QtGui.QMovie(rf"{self.cpath}\UI\ironman1.gif")
         self.ui.label_2.setMovie(self.ui.movie)
         self.ui.movie.start()
-        self.ui.movie = QtGui.QMovie(rf"{self.cpath}\UI\ringJar.gif")
+        self.ui.movie = QtGui.QMovie(rf"{self.cpath}\UI\ringJar.jpg")
         self.ui.label_3.setMovie(self.ui.movie)
         self.ui.movie.start()
         self.ui.movie = QtGui.QMovie(rf"{self.cpath}\UI\circle.gif")
@@ -1111,6 +1127,6 @@ class Main(QMainWindow):
 
 current_path = os.getcwd()
 app = QApplication(sys.argv)
-jarvis = Main(path=current_path)
-jarvis.show()
+Lexi = Main(path=current_path)
+Lexi.show()
 exit(app.exec_())

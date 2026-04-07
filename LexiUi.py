@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'JarvisUi.ui'
+# Form implementation generated from reading ui file 'LexiUi.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -11,12 +11,12 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_JarvisUI(object):
+class Ui_LexiUI(object):
     cpath =""
-    def setupUi(self, JarvisUI):
-        JarvisUI.setObjectName("JarvisUI")
-        JarvisUI.resize(1819, 926)
-        self.centralwidget = QtWidgets.QWidget(JarvisUI)
+    def setupUi(self, LexiUI):
+        LexiUI.setObjectName("LexiUI")
+        LexiUI.resize(1819, 926)
+        self.centralwidget = QtWidgets.QWidget(LexiUI)
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(-80, -50, 1981, 1091))
@@ -177,18 +177,17 @@ class Ui_JarvisUI(object):
         self.label_16.raise_()
         self.label_5.raise_()
         #self.label_17.raise_()
-        JarvisUI.setCentralWidget(self.centralwidget)
+        LexiUI.setCentralWidget(self.centralwidget)
+        self.retranslateUi(LexiUI)
+        QtCore.QMetaObject.connectSlotsByName(LexiUI)
 
-        self.retranslateUi(JarvisUI)
-        QtCore.QMetaObject.connectSlotsByName(JarvisUI)
-
-    def retranslateUi(self, JarvisUI):
+    def retranslateUi(self, LexiUI):
         _translate = QtCore.QCoreApplication.translate
-        JarvisUI.setWindowTitle(_translate("JarvisUI", "MainWindow"))
-        self.pushButton_3.setText(_translate("JarvisUI", "EXIT"))
-        self.pushButton_4.setText(_translate("JarvisUI", "RUN"))
-        self.label_14.setText(_translate("JarvisUI", "    DATE"))
-        self.label_15.setText(_translate("JarvisUI", "      TIME"))
+        LexiUI.setWindowTitle(_translate("LexiUI", "MainWindow"))
+        self.pushButton_3.setText(_translate("LexiUI", "EXIT"))
+        self.pushButton_4.setText(_translate("LexiUI", "RUN"))
+        self.label_14.setText(_translate("LexiUI", "    DATE"))
+        self.label_15.setText(_translate("LexiUI", "      TIME"))
     
     def __init__(self, path):
         self.cpath = path
@@ -200,8 +199,8 @@ if __name__ == "__main__":
     
     current_path = os.getcwd()
     app = QtWidgets.QApplication(sys.argv)
-    JarvisUI = QtWidgets.QMainWindow()
-    ui = Ui_JarvisUI(path=current_path)
-    ui.setupUi(JarvisUI)
-    JarvisUI.show()
+    LexiUI = QtWidgets.QMainWindow()
+    ui = Ui_LexiUI(path=current_path)
+    ui.setupUi(LexiUI)
+    LexiUI.show()
     sys.exit(app.exec_())
